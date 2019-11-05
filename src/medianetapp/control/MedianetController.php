@@ -36,15 +36,32 @@ class MedianetController extends \mf\control\AbstractController
             }
             else{
                 $references = explode(",",$_POST["documents"]);
+                $error_reference = [];
 
 
                 foreach ($references as $reference){
                     $document = Document::where("reference", "=", $reference)->first();
 
                     if($document === null){
-                        $vue = new MedianetView(["error_message" => "Ajout d'emprunt échoué, la référence ".$reference." n'existe pas."]);
-                        $vue->render("borrow");
+                        $error_reference[] = $reference;
                     }
+                }
+
+                if($error_reference === []){
+                    echo "ok";
+                }
+                else{
+                    $message_erreur = "Ajout d'emprunt échoué, la ou les référence(s) : ";
+
+                    foreach ($error_reference as $reference){
+                        $message_erreur .= $reference.",";
+                    }
+
+                   $message_erreur = substr($message_erreur, 0, -1);
+                    $message_erreur .= " n'éxiste(s) pas.";
+
+                    $vue = new MedianetView(["error_message" => $message_erreur]);
+                    $vue->render("borrow");
                 }
             }
         }
