@@ -9,10 +9,14 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderHeader(){
-
+        return "";
     }
     private function renderFooter(){
+        return "";
+    }
 
+    private function renderBorrow(){
+        return "<label>Usager</label><input type='text'><label>Documents</label><input type='text'><input type='submit'>";
     }
     private function borrow_recap(){
         $lesEmprunts = $this->data['documents'];
@@ -62,10 +66,14 @@ EQT;
         $footer = $this->renderFooter();
 
         switch ($selector){
+            case "borrow":
+                $article = $this->renderBorrow();
+                break;
             case "borrow_recap":
                 $article = $this->borrow_recap();
                 break;
         }
+
 
         $body = <<< EQT
             <header>
@@ -77,8 +85,7 @@ EQT;
                     ${article}
                 </article>
             </section>
-            
-            <footer class="theme-backcolor1">
+            <footer>
                 ${footer}
             </footer>
 EQT;
