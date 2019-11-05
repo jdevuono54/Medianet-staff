@@ -27,7 +27,7 @@ class MedianetController extends \mf\control\AbstractController
 
     public function add_borrow(){
         /* VERFIE QUE LES CHAMPS NE SONT PAS VIDES */
-        if($_POST["user"] != null && $_POST["documents"] != null){
+        if($_POST["user"] != null && $_POST["reference"] != null){
             $user = User::where("id","=",filter_var($_POST["user"],FILTER_SANITIZE_NUMBER_INT))->first();
 
             /* VERIFIE QUE L'UTILISATEUR EXISTE SINON RENVOIE SUR LA PAGE AVEC MSG ERREUR */
@@ -37,7 +37,7 @@ class MedianetController extends \mf\control\AbstractController
             }
             else{
                 /* SI USER EXISTE TRANSFORME LE CHAMP DE REF DE DOC EN TABLEAU, PREPARE UNE COLLECTION DE DOCUMENTS ET UNE COLLECTION DE MESSAGE D'ERREUR POUR SAVOIR QUELLE REF BUG */
-                $references = explode(",",$_POST["documents"]);
+                $references = explode(",",$_POST["reference"]);
                 $error_reference = [];
                 $documents = [];
 
