@@ -4,6 +4,8 @@
 namespace medianetapp\control;
 use medianetapp\model\User as user;
 
+use medianetapp\model\Borrow;
+use medianetapp\model\Document;
 use medianetapp\model\User;
 use medianetapp\view\MedianetView;
 use mf\auth\exception\AuthentificationException;
@@ -39,17 +41,35 @@ class MedianetController extends \mf\control\AbstractController
     }
 
     public function add_borrow(){
-        $vue = new MedianetView(null);
 
-        $user = User::where("id","=",$_POST["user"])->first();
+        if($_POST["user"] != null && $_POST["documents"] != null){
+            $user = User::where("id","=",$_POST["user"])->first();
 
-        if($user === null){
+            if($user === null){
+                $vue = new MedianetView(["error_message" => "L'utilisateur n'existe pas"]);
+                $vue->render("borrow");
+            }
+            else{
+                $references = explode(",",$_POST["documents"]);
+
+
+                foreach ($references as $reference){
+                    $document = Document::where("reference", "=", $reference)->first();
+
+                    if($document === null){
+                        $vue = new MedianetView(["error_message" => "Ajout d'emprunt échoué, la référence ".$reference." n'existe pas."]);
+                        $vue->render("borrow");
+                    }
+                }
+            }
+        }
+        else{
+            $vue = new MedianetView(["error_message" => "Veuillez saisir l'id de l'utilisateur et l'id du/des document(s)"]);
             $vue->render("borrow");
-            throw new AuthentificationException("L'utilisateur n'existe pas");
         }
 
-        $documents = explode(",",$_POST["documents"]);
 
-        print_r($documents);
+
+
     }
 }

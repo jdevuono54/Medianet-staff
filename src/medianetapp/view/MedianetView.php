@@ -16,6 +16,7 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderBorrow(){
+        $message = $this->data["error_message"];
         $html = <<< EQT
         <form action="add_borrow" method="post">
             <label>Usager</label>
@@ -23,6 +24,7 @@ class MedianetView extends \mf\view\AbstractView
             <label>Documents</label>
             <input type='text' name="documents">
             <input type='submit'>
+            <p>${message}</p>
         </form>
 EQT;
         return $html;
