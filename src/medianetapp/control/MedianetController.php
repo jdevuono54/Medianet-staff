@@ -4,7 +4,9 @@
 namespace medianetapp\control;
 use medianetapp\model\User as user;
 
+use medianetapp\model\User;
 use medianetapp\view\MedianetView;
+use mf\auth\exception\AuthentificationException;
 
 class MedianetController extends \mf\control\AbstractController
 {
@@ -34,5 +36,20 @@ class MedianetController extends \mf\control\AbstractController
         }
         $vue = new \medianetapp\view\MedianetView(["documents" => $documents] );
         $vue->render('borrow_recap');
+    }
+
+    public function add_borrow(){
+        $vue = new MedianetView(null);
+
+        $user = User::where("id","=",$_POST["user"])->first();
+
+        if($user === null){
+            $vue->render("borrow");
+            throw new AuthentificationException("L'utilisateur n'existe pas");
+        }
+
+        $documents = explode(",",$_POST["documents"]);
+
+        print_r($documents);
     }
 }
