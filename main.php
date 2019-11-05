@@ -3,13 +3,14 @@
 
 
 require_once 'src/mf/utils/ClassLoader.php';
+/* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
+require_once 'vendor/autoload.php';
 
 $autolaod = new mf\utils\ClassLoader("src");
 $autolaod->register();
 
 
-/* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
-require_once 'vendor/autoload.php';
+
 
 $config = parse_ini_file('conf/config.ini');
 
