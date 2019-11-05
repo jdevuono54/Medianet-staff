@@ -16,7 +16,16 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderBorrow(){
-        return "<label>Usager</label><input type='text'><label>Documents</label><input type='text'><input type='submit'>";
+        $html = <<< EQT
+        <form action="add_borrow" method="post">
+            <label>Usager</label>
+            <input type='text' name="user">
+            <label>Documents</label>
+            <input type='text' name="documents">
+            <input type='submit'>
+        </form>
+EQT;
+        return $html;
     }
 
     protected function renderBody($selector=null){

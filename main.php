@@ -24,7 +24,8 @@ $db->bootEloquent();           /* établir la connexion */
 $router = new \mf\router\Router();
 
 $router->addRoute("borrow","/borrow","medianetapp\control\MedianetController","viewBorrow",null);
-$router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",0);
+$router->addRoute("add_borrow", "/add_borrow","medianetapp\control\MedianetController","add_borrow",null);
+$router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
 
 $router->setDefaultRoute('/home/');
 
