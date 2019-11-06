@@ -1,0 +1,59 @@
+@media (min-width: 0px) and (orientation: portrait) {
+  #borrow_form {
+    width: 64%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form label, #borrow_form input {
+    width: 100%;
+  }
+  #borrow_form #borrow_form_reference {
+    margin-top: 1em;
+  }
+  #borrow_form #borrow_form_other {
+    margin-top: 1em;
+  }
+  #borrow_form #borrow_form_other .validate_btn {
+    background-color: #007bff;
+    height: 3em;
+  }
+  #borrow_form #borrow_form_other .error_message {
+    color: red;
+  }
+}
+@media (min-width: 0px) and (orientation: landscape) {
+  body {
+    background-color: red;
+  }
+
+  #borrow_form {
+    width: 64%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form #borrow_form_user, #borrow_form #borrow_form_reference {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form #borrow_form_user label, #borrow_form #borrow_form_reference label {
+    width: 14.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form #borrow_form_user input, #borrow_form #borrow_form_reference input {
+    width: 80.4%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=G_atFor.css.map */
