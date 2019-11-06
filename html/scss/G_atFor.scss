@@ -1,0 +1,27 @@
+@mixin cellule($nbCol, $offset, $nbColGrille,$lgGut){
+
+  $lgCol : (100% - ($lgGut * ($nbColGrille+1))) / $nbColGrille;
+
+  width: ($nbCol * $lgCol + ($nbCol - 1) * $lgGut);
+
+  margin-left: $offset * $lgCol + ($offset +1) * $lgGut;
+
+
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+}
+
+@mixin ligne(){
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+
+@media (min-width: 0px){
+
+}
+
+@media (min-width: 992px){
+}

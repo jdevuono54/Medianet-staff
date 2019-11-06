@@ -1,0 +1,77 @@
+@mixin genereGrille($nCol,$lgCol){
+
+  $lgGut : (100% - ($nCol * $lgCol)) / ($nCol + 1);
+
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+
+  .col{
+    margin-left: $lgGut;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 0px){
+    @for $nCol from 1 through $nCol{
+      .s#{$nCol}{
+        width: ($nCol * $lgCol + ($nCol - 1) * $lgGut);
+      }
+    }
+  }
+
+  @media (max-width: 600px){
+    @for $nCol from 1 through $nCol{
+      /* OFFSET */
+      .offset-s#{$nCol}{
+        margin-left: $nCol * $lgCol + ($nCol +1) * $lgGut;
+
+      }
+    }
+  }
+
+
+
+
+  @media (min-width: 600px){
+    @for $nCol from 1 through $nCol{
+      .m#{$nCol}{
+        width: ($nCol * $lgCol + ($nCol - 1) * $lgGut);
+      }
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 992px){
+    @for $nCol from 1 through $nCol{
+      /* OFFSET */
+      .offset-m#{$nCol}{
+        margin-left: $nCol * $lgCol + ($nCol +1) * $lgGut;
+
+      }
+    }
+  }
+  @media (min-width: 992px){
+    @for $nCol from 1 through $nCol{
+      .l#{$nCol}{
+        width: ($nCol * $lgCol + ($nCol - 1) * $lgGut);
+      }
+    }
+  }
+
+  @media (min-width: 992px){
+    @for $nCol from 1 through $nCol{
+      /* OFFSET */
+      .offset-l#{$nCol}{
+        margin-left: $nCol * $lgCol + ($nCol +1) * $lgGut;
+
+      }
+    }
+  }
+
+
+
+}
+
+@include genereGrille(12,6.6%)
