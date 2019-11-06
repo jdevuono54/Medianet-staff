@@ -32,19 +32,21 @@ class MedianetView extends \mf\view\AbstractView
      * Method That return a form for saving a return
      */
     private function renderFormReturn(){
-        $contents = "<form method='post' action ='add_return'>
+        $errorMessage="";
+        if(isset($this->data["error_message"])){
+            $errorMessage="<p>{$this->data["error_message"]}</p>";
+        }
+        return "<form method='post' action ='add_return'>
                         <input type = 'text' name = 'txtUser' required/>
                         <input type = 'text' name = 'txtDoc' required/>
                         <input type = 'submit'/>
-                     </form>";
-        return $contents;
+                     </form>".$errorMessage;
     }
 
     /*
      * Method that return the recapitulatif view
      */
     private function renderRecap(){
-        $contents = var_dump($this->data["unreturnedDocuments"]);
-        return $contents;
+        return "<h1>Yes</h1>";
     }
 }
