@@ -29,8 +29,12 @@ class MedianetView extends \mf\view\AbstractView
                 <input type='text' name="reference">
             </div>
             <div id="borrow_form_other">
-                <small>* pour emprunter plusieurs documents d'un coup séparer les références par des ,</small>
-                <input class="validate_btn" type='submit'>
+                <div id="borrow_small_text">
+                    <small>* pour emprunter plusieurs documents d'un coup séparer les références par des ,</small>
+                </div>
+                <div>
+                    <input class="validate_btn" type='submit'>
+                </div>
             </div>
     
                 <p class="error_message">${message}</p>

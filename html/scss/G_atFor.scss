@@ -26,6 +26,7 @@ $errorColor: red;
   #borrow_form{
     label, input{
       width: 100%;
+      height: 3em;
     }
     @include cellule(2,0.5,3,1.6%);
 
@@ -45,28 +46,55 @@ $errorColor: red;
         height: 3em;
       }
 
-      .error_message{
-        color: $errorColor;
-      }
+    }
+    .error_message{
+      color: $errorColor;
     }
   }
 }
 
 @media (min-width: 0px) and (orientation: landscape){
-body{background-color: red}
   #borrow_form{
     @include cellule(2,0.5,3,1.6%);
 
     #borrow_form_user,#borrow_form_reference{
       @include ligne;
       label{
-        @include cellule(0.5,0,3,1.6%);
+        @include cellule(1,0,3,1.6%);
       }
       input{
-        @include cellule(2.5,0,3,1.6%);
+        height: 3em;
+        @include cellule(2,0,3,1.6%);
       }
     }
 
+    #borrow_form_reference{
+      margin-top: 1em;
+    }
+
+    #borrow_form_other{
+      margin-top: 1em;
+
+      #borrow_small_text{
+        @include ligne();
+
+        small{
+          @include cellule(2,1,3,1.6%);
+        }
+      }
+
+      .validate_btn{
+        @include cellule(2,1,3,1.6%);
+
+        background-color: $btnValideColor;
+        height: 3em;
+      }
+    }
+
+    .error_message{
+      color: $errorColor;
+      text-align: center;
+    }
   }
 }
 
