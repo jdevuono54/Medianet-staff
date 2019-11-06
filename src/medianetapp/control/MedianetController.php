@@ -6,9 +6,7 @@ use medianetapp\model\User as user;
 
 use medianetapp\model\Borrow;
 use medianetapp\model\Document;
-use medianetapp\model\User;
 use medianetapp\view\MedianetView;
-use mf\auth\exception\AuthentificationException;
 
 class MedianetController extends \mf\control\AbstractController
 {
