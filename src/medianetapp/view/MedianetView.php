@@ -31,20 +31,32 @@ class MedianetView extends \mf\view\AbstractView
     /*
      * Method That return a form for saving a return
      */
-    private function renderFormReturn(){
-        $contents = "<form method='post' action ='add_return'>
-                        <input type = 'text' name = 'txtUser' required/>
-                        <input type = 'text' name = 'txtDoc' required/>
-                        <input type = 'submit'/>
-                     </form>";
-        return $contents;
-    }
+     private function renderFormReturn(){
+         $errorMessage="";
+         if(isset($this->data["error_message"])){
+             $errorMessage="<p>{$this->data["error_message"]}</p>";
+         }
+         return "<form method='post' action ='add_return'>
+                         <input type = 'text' name = 'txtUser' required/>
+                         <input type = 'text' name = 'txtDoc' required/>
+                         <input type = 'submit'/>
+                      </form>".$errorMessage;
+     }
+
 
     /*
      * Method that return the recapitulatif view
      */
     private function renderRecap(){
-        $contents = var_dump($this->data["unreturnedDocuments"]);
+        $contents = "<h1>Documents rendus ".count($this->data["returnedDocuments"])." :<br>";
+        foreach ($this->data["returnedDocuments"] as $docRendu) {
+          $contents .= "$docRendu->title<br>";
+        }
+        $contents .= "<h1>Documents encore en possession ".count($this->data["unreturnedDocuments"])." :<br>";
+        foreach ($this->data["unreturnedDocuments"] as $docEncore) {
+          $contents .= "$docEncore->title<br>";
+        }
+
         return $contents;
     }
 }

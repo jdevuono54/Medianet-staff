@@ -55,7 +55,6 @@ class MedianetController extends \mf\control\AbstractController
                 }
 
                 /*Getting the returned documents*/
-                echo "Ok";
                 $returnedDocuments[] = Document::where('id','=',$document)->first();
             }
 
