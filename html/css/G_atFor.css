@@ -1,4 +1,4 @@
-@media (min-width: 0px) and (orientation: portrait) {
+@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px) {
   #borrow_form {
     width: 64%;
     margin-left: 18%;
@@ -24,7 +24,7 @@
     color: red;
   }
 }
-@media (min-width: 0px) and (orientation: landscape) {
+@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px) {
   #borrow_form {
     width: 64%;
     margin-left: 18%;
@@ -64,15 +64,15 @@
     flex-basis: 100%;
   }
   #borrow_form #borrow_form_other #borrow_small_text small {
-    width: 64%;
-    margin-left: 34.4%;
+    width: 96.8%;
+    margin-left: 1.6%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
   }
   #borrow_form #borrow_form_other .validate_btn {
-    width: 64%;
-    margin-left: 34.4%;
+    width: 96.8%;
+    margin-left: 1.6%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -81,6 +81,28 @@
   }
   #borrow_form .error_message {
     color: red;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  #borrow_form {
+    width: 80%;
+    margin: auto;
+  }
+  #borrow_form form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form form #borrow_form_user, #borrow_form form #borrow_form_reference {
+    width: 50%;
+    margin-left: 0%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form form #borrow_form_other {
+    width: 100%;
     text-align: center;
   }
 }
