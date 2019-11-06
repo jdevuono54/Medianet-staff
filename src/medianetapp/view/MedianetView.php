@@ -49,6 +49,7 @@ EQT;
     private function renderBorrow(){
         $message = $this->data["error_message"];
         $html = <<< EQT
+        <h1 class="nomPage">Ajouter un emprunt</h1>
         <div id="borrow_form">
             <form action="add_borrow" method="post">
             <div id="borrow_form_user">
@@ -97,7 +98,7 @@ EQT;
         <section id="sectionEmprunt">
             
             <article id="articlEmprunt">
-                 <h1 id="titreEmprunt">Récapitulatif d'emprunt</h1>
+                 <h1 class="nomPage">Récapitulatif d'emprunt</h1>
                      <div id="lstEmprunt"> 
                          <ul>
                          ${divEmprunt}
@@ -123,13 +124,13 @@ EQT;
 
         switch ($selector){
             case "borrow":
-                $article = $this->renderBorrow();
+                $content = $this->renderBorrow();
                 break;
             case "borrow_recap":
-                $article = $this->borrow_recap();
+                $content = $this->borrow_recap();
                 break;
             case "home":
-                $article = $this->renderHome();
+                $content = $this->renderHome();
                 break;
         }
 
@@ -139,11 +140,8 @@ EQT;
                 ${header}
             </header>
     
-            <section>
-                <article class="theme-backcolor2">
-                    ${article}
-                </article>
-            </section>
+                    ${content}
+                    
             <footer>
                 ${footer}
             </footer>
