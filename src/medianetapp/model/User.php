@@ -10,4 +10,8 @@ class User extends \Illuminate\Database\Eloquent\Model
     public    $timestamps = false;    /* si vrai la table doit contenir
                                       les deux colonnes updated_at,
                                       created_at */
+    
+    public function Emprunts(){
+        return $this->hasMany('medianetapp\model\Borrow','id_User');
+    }
 }
