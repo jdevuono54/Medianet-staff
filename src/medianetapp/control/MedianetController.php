@@ -7,12 +7,7 @@ use medianetapp\model\User as user;
 use medianetapp\model\Borrow;
 use medianetapp\model\Document;
 use medianetapp\view\MedianetView;
-
-use medianetapp\model\Borrow;
-use medianetapp\model\Document;
-use medianetapp\model\User;
-use medianetapp\view\MedianetView;
-use mf\auth\exception\AuthentificationException;
+use mf\router\Router;
 
 class MedianetController extends \mf\control\AbstractController
 {
@@ -29,19 +24,22 @@ class MedianetController extends \mf\control\AbstractController
         $vue->render("borrow");
     }
     public function borrowRecap(){
+        if(isset($_POST["user"])){
+            $user = user::where("id","=",$_POST["user"])->first();
+            $borrows = $user->emprunts()->where("real_return_date","=",null)->get();
 
-        $_POST["user"] = 1;
-        $user = user::where("id","=",$_POST["user"])->first();
-        $borrows = $user->emprunts()->where("real_return_date","=",null)->get();
+            $documents = [];
 
-        $documents = [];
-
-        foreach ($borrows as $borrow){
-            $document = $borrow->document()->first();
-            $documents[] = $document;
+            foreach ($borrows as $borrow){
+                $document = $borrow->document()->first();
+                $documents[] = $document;
+            }
+            $vue = new \medianetapp\view\MedianetView(["documents" => $documents] );
+            $vue->render('borrow_recap');
         }
-        $vue = new \medianetapp\view\MedianetView(["documents" => $documents] );
-        $vue->render('borrow_recap');
+        else{
+            Router::executeRoute("borrow");
+        }
     }
 
     public function add_borrow(){
@@ -97,6 +95,8 @@ class MedianetController extends \mf\control\AbstractController
 
                                 $document->id_State=2;
                                 $document->update();
+
+                                Router::executeRoute("borrow_recap");
                             }
                         }else{
                             /* SI DOCUMENT INDISPONIBLE */
