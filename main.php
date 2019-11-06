@@ -34,19 +34,19 @@ $router->addRoute('home',
     null
 );
 $router->addRoute('return',
-    '/return/',
+    '/return',
     'medianetapp\control\MedianetController',
     'viewReturn',
     null
 );
 $router->addRoute('add_return',
-    '/add_return/',
+    '/add_return',
     'medianetapp\control\MedianetController',
     'addReturn',
     null
 );
 $router->addRoute('return_recap',
-    '/return_recap/',
+    '/return_recap',
     'medianetapp\control\MedianetController',
     'viewReturnRecap',
     null
