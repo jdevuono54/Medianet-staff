@@ -1,36 +1,42 @@
+#borrow_form .error_message {
+  color: red;
+  width: 100%;
+  text-align: center;
+}
+#borrow_form .validate_btn {
+  background-color: #007bff;
+  height: 3em;
+  border-radius: 6px;
+}
+#borrow_form .validate_btn:hover {
+  background-color: #3395ff;
+}
+
 @media (min-width: 0px) and (orientation: portrait) and (max-width: 992px) {
   #borrow_form {
-    width: 64%;
-    margin-left: 18%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
+    width: 80%;
+    margin-left: 10%;
   }
   #borrow_form label, #borrow_form input {
     width: 100%;
     height: 3em;
   }
-  #borrow_form #borrow_form_reference {
+  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other {
     margin-top: 1em;
   }
-  #borrow_form #borrow_form_other {
-    margin-top: 1em;
+  #borrow_form #borrow_small_text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
   }
-  #borrow_form #borrow_form_other .validate_btn {
-    background-color: #007bff;
-    height: 3em;
-  }
-  #borrow_form .error_message {
-    color: red;
+  #borrow_form #borrow_small_text small {
+    margin-bottom: 1em;
   }
 }
 @media (min-width: 0px) and (orientation: landscape) and (max-width: 992px) {
   #borrow_form {
-    width: 64%;
-    margin-left: 18%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
+    width: 80%;
+    margin-left: 10%;
   }
   #borrow_form #borrow_form_user, #borrow_form #borrow_form_reference {
     display: flex;
@@ -52,10 +58,7 @@
     flex-shrink: 0;
     box-sizing: border-box;
   }
-  #borrow_form #borrow_form_reference {
-    margin-top: 1em;
-  }
-  #borrow_form #borrow_form_other {
+  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other {
     margin-top: 1em;
   }
   #borrow_form #borrow_form_other #borrow_small_text {
@@ -64,11 +67,7 @@
     flex-basis: 100%;
   }
   #borrow_form #borrow_form_other #borrow_small_text small {
-    width: 96.8%;
-    margin-left: 1.6%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
+    margin-bottom: 1em;
   }
   #borrow_form #borrow_form_other .validate_btn {
     width: 96.8%;
@@ -76,17 +75,11 @@
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
-    background-color: #007bff;
-    height: 3em;
-  }
-  #borrow_form .error_message {
-    color: red;
-    text-align: center;
   }
 }
 @media (min-width: 992px) {
   #borrow_form {
-    width: 80%;
+    width: 50%;
     margin: auto;
   }
   #borrow_form form {
@@ -101,9 +94,35 @@
     flex-shrink: 0;
     box-sizing: border-box;
   }
+  #borrow_form form #borrow_form_user .borrow_label, #borrow_form form #borrow_form_reference .borrow_label {
+    width: 31.2%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form form #borrow_form_user input, #borrow_form form #borrow_form_reference input {
+    width: 64%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
   #borrow_form form #borrow_form_other {
     width: 100%;
-    text-align: center;
+  }
+  #borrow_form form #borrow_form_other #borrow_small_text {
+    width: 50%;
+    margin-left: 50%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 1em;
+  }
+  #borrow_form form #borrow_form_other .validate_btn {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1em;
   }
 }
 

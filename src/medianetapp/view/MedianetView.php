@@ -22,11 +22,11 @@ class MedianetView extends \mf\view\AbstractView
             <form action="add_borrow" method="post">
             <div id="borrow_form_user">
                 <label>Usager : </label>
-                <input type='text' name="user">
+                <input type='text' name="user" required>
             </div>
             <div id="borrow_form_reference">
-                <label>Référence du/des document(s) : </label>
-                <input type='text' name="reference">
+                <label>Référence(s)*: </label>
+                <input type='text' name="reference" required>
             </div>
             <div id="borrow_form_other">
                 <div id="borrow_small_text">

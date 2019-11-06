@@ -22,40 +22,53 @@
 $btnValideColor: #007bff;
 $errorColor: red;
 
+#borrow_form{
+  .error_message{
+    color: $errorColor;
+    width: 100%;
+    text-align: center;
+  }
+
+  .validate_btn{
+    background-color: $btnValideColor;
+    height: 3em;
+    border-radius: 6px;
+
+    &:hover{
+      background-color: lighten($btnValideColor,10%);
+    }
+  }
+}
+
 @media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
   #borrow_form{
+    width: 80%;
+    margin-left: 10%;
+
     label, input{
       width: 100%;
       height: 3em;
     }
-    @include cellule(2,0.5,3,1.6%);
 
-    #borrow_form_user{
-
-    }
-
-    #borrow_form_reference{
+    #borrow_form_reference,#borrow_form_other{
       margin-top: 1em;
     }
 
-    #borrow_form_other{
-      margin-top: 1em;
+    #borrow_small_text{
+      @include ligne();
 
-      .validate_btn{
-        background-color: $btnValideColor;
-        height: 3em;
+      small{
+        margin-bottom: 1em;
       }
-
-    }
-    .error_message{
-      color: $errorColor;
     }
   }
 }
 
 @media (min-width: 0px) and (orientation: landscape) and (max-width: 992px){
+
   #borrow_form{
-    @include cellule(2,0.5,3,1.6%);
+    width: 80%;
+    margin-left: 10%;
 
     #borrow_form_user,#borrow_form_reference{
       @include ligne;
@@ -68,39 +81,29 @@ $errorColor: red;
       }
     }
 
-    #borrow_form_reference{
+    #borrow_form_reference,#borrow_form_other{
       margin-top: 1em;
     }
 
     #borrow_form_other{
-      margin-top: 1em;
-
       #borrow_small_text{
         @include ligne();
 
         small{
-          @include cellule(1,0,1,1.6%);
+          margin-bottom: 1em;
         }
       }
 
       .validate_btn{
         @include cellule(1,0,1,1.6%);
-
-        background-color: $btnValideColor;
-        height: 3em;
       }
-    }
-
-    .error_message{
-      color: $errorColor;
-      text-align: center;
     }
   }
 }
 
 @media (min-width: 992px){
   #borrow_form{
-    width: 80%;
+    width: 50%;
     margin: auto;
 
     form{
@@ -109,12 +112,30 @@ $errorColor: red;
       #borrow_form_user,#borrow_form_reference{
         @include cellule(1,0,2,0);
 
+        .borrow_label{
+          @include cellule(1,0,3,1.6%);
+        }
+        input{
+          @include cellule(2,0,3,1.6%);
+        }
+
       }
 
       #borrow_form_other{
         width: 100%;
-        text-align: center;
+
+        #borrow_small_text{
+          @include cellule(1,1,2,0);
+          margin-top: 1em;
+        }
+
+        .validate_btn{
+          width: 50%;
+          margin-left: 25%;
+          margin-top: 1em;
+        }
       }
+
     }
   }
 }
