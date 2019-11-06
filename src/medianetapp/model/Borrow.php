@@ -13,4 +13,10 @@ class Borrow extends \Illuminate\Database\Eloquent\Model
                                       les deux colonnes updated_at,
                                       created_a*/
 
+    public function emprunteur(){
+        return $this->belongsTo('medianetapp\model\User', 'id_User');
+    }
+    public function document(){
+        return $this->belongsTo('medianetapp\model\Document', 'id_Document');
+    }
 }
