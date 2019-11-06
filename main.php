@@ -9,7 +9,9 @@ require_once 'vendor/autoload.php';
 $autolaod = new mf\utils\ClassLoader("src");
 $autolaod->register();
 
-
+\medianetapp\view\MedianetView::addStyleSheet("html/css/G_atFor.css");
+\medianetapp\view\MedianetView::addStyleSheet("html/css/G_cssGrid.css");
+\medianetapp\view\MedianetView::addStyleSheet("html/css/G_mixins.css");
 
 
 $config = parse_ini_file('conf/config.ini');
