@@ -19,8 +19,55 @@
     flex-basis: 100%;
 }
 
-@media (min-width: 0px){
+$btnValideColor: #007bff;
+$errorColor: red;
 
+@media (min-width: 0px) and (orientation: portrait){
+  #borrow_form{
+    label, input{
+      width: 100%;
+    }
+    @include cellule(2,0.5,3,1.6%);
+
+    #borrow_form_user{
+
+    }
+
+    #borrow_form_reference{
+      margin-top: 1em;
+    }
+
+    #borrow_form_other{
+      margin-top: 1em;
+
+      .validate_btn{
+        background-color: $btnValideColor;
+        height: 3em;
+      }
+
+      .error_message{
+        color: $errorColor;
+      }
+    }
+  }
+}
+
+@media (min-width: 0px) and (orientation: landscape){
+body{background-color: red}
+  #borrow_form{
+    @include cellule(2,0.5,3,1.6%);
+
+    #borrow_form_user,#borrow_form_reference{
+      @include ligne;
+      label{
+        @include cellule(0.5,0,3,1.6%);
+      }
+      input{
+        @include cellule(2.5,0,3,1.6%);
+      }
+    }
+
+  }
 }
 
 @media (min-width: 992px){

@@ -18,22 +18,24 @@ class MedianetView extends \mf\view\AbstractView
     private function renderBorrow(){
         $message = $this->data["error_message"];
         $html = <<< EQT
-        <form action="add_borrow" method="post">
-        <div>
-            <label>Usager</label>
-            <input type='text' name="user">
+        <div id="borrow_form">
+            <form action="add_borrow" method="post">
+            <div id="borrow_form_user">
+                <label>Usager : </label>
+                <input type='text' name="user">
+            </div>
+            <div id="borrow_form_reference">
+                <label>Référence du/des document(s) : </label>
+                <input type='text' name="reference">
+            </div>
+            <div id="borrow_form_other">
+                <small>* pour emprunter plusieurs documents d'un coup séparer les références par des ,</small>
+                <input class="validate_btn" type='submit'>
+            </div>
+    
+                <p class="error_message">${message}</p>
+            </form>
         </div>
-        <div>
-            <label>Référence du/des document(s)</label>
-            <input type='text' name="reference">
-        </div>
-        <div>
-        <small>* pour emprunter plusieurs documents d'un coup séparer les références par des ,</small>
-            <input type='submit'>
-        </div>
-
-            <p>${message}</p>
-        </form>
 EQT;
         return $html;
     }
