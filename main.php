@@ -36,4 +36,3 @@ $router->addRoute("home","/home/","medianetapp\control\MedianetController","view
 $router->setDefaultRoute('/home/');
 $router->run();
 
-$router->run();

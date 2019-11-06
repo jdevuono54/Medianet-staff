@@ -59,16 +59,16 @@ EQT;
         }
         $html = <<< EQT
 
-        <section>
+        <section id="sectionEmprunt">
             
-            <article>
-                 <h1>Récapitulatif d'emprunt</h1>
-                     <div> 
+            <article id="articlEmprunt">
+                 <h1 id="titreEmprunt">Récapitulatif d'emprunt</h1>
+                     <div id="lstEmprunt"> 
                          <ul>
                          ${divEmprunt}
                          </ul>
                      </div>
-                     <div>
+                     <div id="TTemprunt">
                        
                      Total d'emprunts : ${nbEmprunt}
                      
