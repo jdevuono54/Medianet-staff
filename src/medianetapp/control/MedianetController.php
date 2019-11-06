@@ -6,6 +6,7 @@ namespace medianetapp\control;
 
 use medianetapp\model\Borrow;
 use medianetapp\model\Document;
+use medianetapp\model\User;
 use medianetapp\view\MedianetView;
 
 class MedianetController extends \mf\control\AbstractController
@@ -27,7 +28,13 @@ class MedianetController extends \mf\control\AbstractController
             /*Filtred values*/
             $filtredTxtUser=strip_tags(trim($_REQUEST['txtUser']));
             $filtredTxtDoc=strip_tags(trim($_REQUEST['txtDoc']));
-            //
+
+            //var for getting the the returned documents
+            $returnedDocuments = [];
+
+            //var for getting the unreturned documents
+            $unreturnedDocuments=[];
+
             $documents = explode(',',$filtredTxtDoc);
             foreach ($documents as $document){
 
@@ -47,12 +54,37 @@ class MedianetController extends \mf\control\AbstractController
                     $doc->save();
                 }
 
-                    /*Call the recap view*/
-                    //TODO get the returned books and the not returned ones then pass them in the constructor of the view
-                    $view = new MedianetView(null);
-                    $view->render("return_recap");
-                }
+                /*Getting the returned documents*/
+                echo "Ok";
+                $returnedDocuments[] = Document::where('id','=',$document)->first();
             }
+
+            /*Get the unreturned Documents*/
+            $unreturnedDocuments=$this->GetUnreturnedDocuments($filtredTxtUser);
+
+            /*call the recap view*/
+            $view = new MedianetView(["returnedDocuments"=>$returnedDocuments,"unreturnedDocuments"=>$unreturnedDocuments]);
+            $view->render("return_recap");
         }
     }
+
+        /*
+         * function thath return the unretuned documents
+         */
+        private function GetUnreturnedDocuments($iduser){
+            $unreturnedDocuments=[];
+            /*Getting the not returned documents*/
+            $user = User::where('id','=',$iduser)->first();
+
+            //Get the emprunts with null real return date
+            $emprunts=$user->Emprunts()->where('real_return_date','=',null)->get();
+
+            //
+            foreach ($emprunts as $emprunt) {
+
+                $doc=$emprunt->document()->first();
+                $unreturnedDocuments[]=$doc;
+            }
+            return $unreturnedDocuments  ;
+        }
 }
