@@ -41,6 +41,40 @@ $errorColor: red;
 }
 
 @media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
+@media(min-width: 0px){
+  /*Habib*/
+
+  #sectionEmprunt{
+
+    @include cellule(3,0,3,1.6%);
+
+
+
+
+    #titreEmprunt{
+      @include cellule(4,4,12,1.6%);
+      text-align: center;
+      height: auto;
+      border: 2px solid black;
+      background-color: grey;
+      font-size: large;
+
+    }
+    #lstEmprunt{
+
+      @include cellule(4,4,12,1.6%);
+      margin-top: 2em;
+    }
+    #TTemprunt{
+
+      @include cellule(4,6  ,12,1.6%);
+
+    }
+  }
+}
+
+
+@media (min-width: 0px) and (orientation: portrait){
   #borrow_form{
     width: 80%;
     margin-left: 10%;
@@ -61,6 +95,44 @@ $errorColor: red;
         margin-bottom: 1em;
       }
     }
+  }
+
+  #sectionMenu{
+    @include cellule(12,0,12,1.6%);
+
+
+    margin-top:20%;
+
+
+    #divMenu{
+
+      @include ligne();
+
+      #MenuGestionEmprunt,#MenuGestionRetour,#MenuGestionUsager{
+        @include cellule(8,2,12,1.6%);
+        background-color: grey;
+        border: 2px solid black;
+        height: 3em;
+        font-size: larger;
+        text-align: center;
+
+      }
+      #MenuGestionRetour{
+
+        margin-top: 2em;
+
+      }
+      #MenuGestionUsager{
+        margin-top: 2em;
+
+      }
+
+    }
+
+
+
+
+
   }
 }
 
@@ -99,43 +171,43 @@ $errorColor: red;
       }
     }
   }
-}
 
-@media (min-width: 992px){
-  #borrow_form{
-    width: 50%;
-    margin: auto;
+  #sectionMenu{
+    @include cellule(12,0,12,1.6%);
 
-    form{
+
+    margin-top:20%;
+
+
+    #divMenu{
+
       @include ligne();
 
-      #borrow_form_user,#borrow_form_reference{
-        @include cellule(1,0,2,0);
-
-        .borrow_label{
-          @include cellule(1,0,3,1.6%);
-        }
-        input{
-          @include cellule(2,0,3,1.6%);
-        }
+      #MenuGestionEmprunt,#MenuGestionRetour,#MenuGestionUsager{
+        @include cellule(1.5,2,12,1.6%);
+        background-color: grey;
+        border: 2px solid black;
+        height: 3em;
+        font-size: larger;
+        text-align: center;
+        height: 5em;
+        width: 5em;
 
       }
 
-      #borrow_form_other{
-        width: 100%;
-
-        #borrow_small_text{
-          @include cellule(1,1,2,0);
-          margin-top: 1em;
-        }
-
-        .validate_btn{
-          width: 50%;
-          margin-left: 25%;
-          margin-top: 1em;
-        }
-      }
 
     }
+
+
+
+
+
   }
+
+
+
+}
+
+/*LAPTOP*/
+@media (min-width: 992px){
 }

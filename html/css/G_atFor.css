@@ -14,29 +14,40 @@
 
 @media (min-width: 0px) and (orientation: portrait) and (max-width: 992px) {
   #borrow_form {
-    width: 80%;
-    margin-left: 10%;
+    width: 64%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
   }
   #borrow_form label, #borrow_form input {
     width: 100%;
-    height: 3em;
   }
-  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other {
+  #borrow_form #borrow_form_reference {
     margin-top: 1em;
   }
-  #borrow_form #borrow_small_text {
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 100%;
+  #borrow_form #borrow_form_other {
+    margin-top: 1em;
   }
-  #borrow_form #borrow_small_text small {
-    margin-bottom: 1em;
+  #borrow_form #borrow_form_other .validate_btn {
+    background-color: #007bff;
+    height: 3em;
+  }
+  #borrow_form #borrow_form_other .error_message {
+    color: red;
   }
 }
-@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px) {
+@media (min-width: 0px) and (orientation: landscape) {
+  body {
+    background-color: red;
+  }
+
   #borrow_form {
-    width: 80%;
-    margin-left: 10%;
+    width: 64%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
   }
   #borrow_form #borrow_form_user, #borrow_form #borrow_form_reference {
     display: flex;
@@ -44,85 +55,18 @@
     flex-basis: 100%;
   }
   #borrow_form #borrow_form_user label, #borrow_form #borrow_form_reference label {
-    width: 31.2%;
+    width: 14.8%;
     margin-left: 1.6%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
   }
   #borrow_form #borrow_form_user input, #borrow_form #borrow_form_reference input {
-    height: 3em;
-    width: 64%;
+    width: 80.4%;
     margin-left: 1.6%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
-  }
-  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other {
-    margin-top: 1em;
-  }
-  #borrow_form #borrow_form_other #borrow_small_text {
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 100%;
-  }
-  #borrow_form #borrow_form_other #borrow_small_text small {
-    margin-bottom: 1em;
-  }
-  #borrow_form #borrow_form_other .validate_btn {
-    width: 96.8%;
-    margin-left: 1.6%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-}
-@media (min-width: 992px) {
-  #borrow_form {
-    width: 50%;
-    margin: auto;
-  }
-  #borrow_form form {
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 100%;
-  }
-  #borrow_form form #borrow_form_user, #borrow_form form #borrow_form_reference {
-    width: 50%;
-    margin-left: 0%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-  #borrow_form form #borrow_form_user .borrow_label, #borrow_form form #borrow_form_reference .borrow_label {
-    width: 31.2%;
-    margin-left: 1.6%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-  #borrow_form form #borrow_form_user input, #borrow_form form #borrow_form_reference input {
-    width: 64%;
-    margin-left: 1.6%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-  #borrow_form form #borrow_form_other {
-    width: 100%;
-  }
-  #borrow_form form #borrow_form_other #borrow_small_text {
-    width: 50%;
-    margin-left: 50%;
-    overflow-wrap: break-word;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    margin-top: 1em;
-  }
-  #borrow_form form #borrow_form_other .validate_btn {
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 1em;
   }
 }
 

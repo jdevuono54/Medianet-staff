@@ -16,7 +16,8 @@ class MedianetController extends \mf\control\AbstractController
     }
 
     public function viewHome(){
-
+        $vue = new MedianetView(null);
+        $vue->render("home");
     }
 
     public function viewBorrow(){
