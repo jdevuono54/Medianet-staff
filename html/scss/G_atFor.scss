@@ -19,9 +19,237 @@
     flex-basis: 100%;
 }
 
-@media (min-width: 0px){
+$btnValideColor: #007bff;
+$errorColor: red;
 
+#borrow_form{
+  .error_message{
+    color: $errorColor;
+    width: 100%;
+    text-align: center;
+  }
+
+  .validate_btn{
+    background-color: $btnValideColor;
+    height: 3em;
+    border-radius: 6px;
+
+    &:hover{
+      background-color: lighten($btnValideColor,10%);
+    }
+  }
 }
 
+.nomPage{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 2px solid black;
+  background-color: grey;
+  font-size: 2em;
+}
+
+// POUR TOUT ECRANS
+@media(min-width: 0px){
+  // HABIB RECAP EMPRUNTS
+  #sectionEmprunt{
+
+    @include cellule(3,0,3,1.6%);
+
+    #lstEmprunt{
+      @include cellule(4,4,12,1.6%);
+      margin-top: 2em;
+    }
+    #TTemprunt{
+      @include cellule(4,6  ,12,1.6%);
+    }
+  }
+  // FIN HABIB RECAP EMPRUNTS
+}
+
+/* TOUT ECRANS PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait){
+  // HABIB MENU
+  #sectionMenu{
+    @include cellule(12,0,12,1.6%);
+    margin-top:20%;
+
+    #divMenu{
+      @include ligne();
+
+      #MenuGestionEmprunt,#MenuGestionRetour,#MenuGestionUsager{
+        @include cellule(8,2,12,1.6%);
+        background-color: grey;
+        border: 2px solid black;
+        height: 3em;
+        font-size: larger;
+        text-align: center;
+      }
+      #MenuGestionRetour{
+        margin-top: 2em;
+      }
+      #MenuGestionUsager{
+        margin-top: 2em;
+      }
+    }
+  }
+  // HABIB FIN MENU
+}
+
+/* TABLETTES PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px){
+  // BORROW (Jacques)
+  #borrow_form, .nomPage{
+    width: 80%;
+    margin-left: 10%;
+  }
+  #borrow_form{
+    label, input{
+      width: 100%;
+      height: 3em;
+    }
+
+    #borrow_form_reference,#borrow_form_other{
+      margin-top: 1em;
+    }
+
+    #borrow_small_text{
+      @include ligne();
+
+      small{
+        margin-bottom: 1em;
+      }
+    }
+  }
+  // FIN BORROW (Jacques)
+}
+/* TABLETTES PAYSAGE */
+@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px){
+  // BORROW (Jacques)
+  #borrow_form{
+    width: 80%;
+    margin-left: 10%;
+
+    #borrow_form_user,#borrow_form_reference{
+      @include ligne;
+      label{
+        @include cellule(1,0,3,1.6%);
+      }
+      input{
+        height: 3em;
+        @include cellule(2,0,3,1.6%);
+      }
+    }
+
+    #borrow_form_reference,#borrow_form_other{
+      margin-top: 1em;
+    }
+
+    #borrow_form_other{
+      #borrow_small_text{
+        @include ligne();
+
+        small{
+          margin-bottom: 1em;
+        }
+      }
+
+      .validate_btn{
+        @include cellule(1,0,1,1.6%);
+      }
+    }
+  }
+  // FIN BORROW (Jacques)
+
+  // HABIB MENU
+  #sectionMenu{
+    @include cellule(12,0,12,1.6%);
+    margin-top:20%;
+
+    #divMenu{
+
+      @include ligne();
+
+      #MenuGestionEmprunt,#MenuGestionRetour,#MenuGestionUsager{
+        @include cellule(1.5,2,12,1.6%);
+        background-color: grey;
+        border: 2px solid black;
+        font-size: larger;
+        text-align: center;
+        height: 5em;
+        width: 5em;
+
+      }
+    }
+  }
+  //FIN HABIB MENU
+}
+
+/*LAPTOP*/
 @media (min-width: 992px){
+  // BORROW (Jacques)
+  #borrow_form{
+    width: 50%;
+    margin: auto;
+
+    form{
+      @include ligne();
+
+      #borrow_form_user,#borrow_form_reference{
+        @include cellule(1,0,2,0);
+
+        .borrow_label{
+          @include cellule(1,0,3,1.6%);
+        }
+        input{
+          @include cellule(2,0,3,1.6%);
+        }
+
+      }
+
+      #borrow_form_other{
+        width: 100%;
+
+        #borrow_small_text{
+          @include cellule(1,1,2,0);
+          margin-top: 1em;
+        }
+
+        .validate_btn{
+          width: 50%;
+          margin-left: 25%;
+          margin-top: 1em;
+        }
+      }
+
+    }
+  }
+  // FIN BORROW (Jacques)
+
+  //MENU HABIB
+  #sectionMenu {
+    @include cellule(12, 0, 12, 1.6%);
+
+
+    margin-top: 20%;
+
+
+    #divMenu {
+
+      @include ligne();
+
+      #MenuGestionEmprunt, #MenuGestionRetour, #MenuGestionUsager {
+        @include cellule(1.5, 2, 12, 1.6%);
+        background-color: grey;
+        border: 2px solid black;
+        font-size: larger;
+        text-align: center;
+        height: 5em;
+
+      }
+    }
+
+    //FIN MENU HABIB
+  }
 }
