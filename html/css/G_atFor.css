@@ -23,14 +23,14 @@
 }
 
 @media (min-width: 0px) {
-  #sectionEmprunt {
+  #sectionEmprunt, #sectionReturn {
     width: 96.8%;
     margin-left: 1.6%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
   }
-  #sectionEmprunt #lstEmprunt {
+  #sectionEmprunt #lstEmprunt, #sectionEmprunt #lstReturn, #sectionReturn #lstEmprunt, #sectionReturn #lstReturn {
     width: 31.2%;
     margin-left: 34.4%;
     overflow-wrap: break-word;
@@ -38,12 +38,29 @@
     box-sizing: border-box;
     margin-top: 2em;
   }
-  #sectionEmprunt #TTemprunt {
+  #sectionEmprunt #TTemprunt, #sectionEmprunt #TTreturn, #sectionReturn #TTemprunt, #sectionReturn #TTreturn {
     width: 31.2%;
     margin-left: 50.8%;
     overflow-wrap: break-word;
     flex-shrink: 0;
     box-sizing: border-box;
+  }
+  #sectionEmprunt #lstReturn, #sectionReturn #lstReturn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #sectionEmprunt #lstReturn .list_documents, #sectionReturn #lstReturn .list_documents {
+    width: 47.6%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #sectionEmprunt p, #sectionReturn p {
+    color: #9c9c9c;
+    text-decoration-line: underline;
+    text-decoration-color: #007bff;
   }
 }
 /* TOUT ECRANS PORTRAIT */

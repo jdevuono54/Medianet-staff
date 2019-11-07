@@ -52,20 +52,31 @@ $errorColor: red;
 
 // POUR TOUT ECRANS
 @media(min-width: 0px){
-  // HABIB RECAP EMPRUNTS
-  #sectionEmprunt{
+  // HABIB RECAP EMPRUNTS also RETURN_RECAP (Younes)
+  #sectionEmprunt, #sectionReturn{
 
     @include cellule(3,0,3,1.6%);
 
-    #lstEmprunt{
+    #lstEmprunt,#lstReturn{
       @include cellule(4,4,12,1.6%);
       margin-top: 2em;
     }
-    #TTemprunt{
+    #TTemprunt,#TTreturn{
       @include cellule(4,6  ,12,1.6%);
     }
+    #lstReturn{
+      @include ligne();
+      .list_documents{
+        @include cellule(1,0,2,1.6%);
+      }
+    }
+    p{
+      color:#9c9c9c;
+      text-decoration-line: underline;
+      text-decoration-color: #007bff;
+    }
   }
-  // FIN HABIB RECAP EMPRUNTS
+  // FIN HABIB RECAP EMPRUNTS and RETURN_RECAP (Younes)
 }
 
 /* TOUT ECRANS PORTRAIT */
