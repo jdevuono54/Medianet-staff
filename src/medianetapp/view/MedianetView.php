@@ -132,6 +132,12 @@ EQT;
             case "home":
                 $content = $this->renderHome();
                 break;
+            case "return":
+                $content = $this->renderFormReturn();
+                break;
+            case "return_recap":
+                $content=$this->renderRecap();
+                break;
         }
 
 
@@ -147,5 +153,91 @@ EQT;
             </footer>
 EQT;
         return $body;
+    }
+
+    /*
+     * Method That return a form for saving a return
+     */
+    private function renderFormReturn(){
+        $errorMessage="";
+        if(isset($this->data["error_message"])){
+            $errorMessage="<p class='error_message'>{$this->data["error_message"]}</p>";
+        }
+        return "<h1 class='nomPage'>Ajouter des retours</h1>
+                 <div id='return_form'>
+                    <form method='post' action ='add_return'>
+                    <div id='return_form_user'>
+                        <label for='txtUser'>Usager :</label>
+                        <input type = 'text' name = 'txtUser' required/>
+                    </div>
+                    <div id='return_form_reference'>
+                        <label for='txtDoc' class='doc'>Documents *:</label>
+                        <input type = 'text' name = 'txtDoc' required/>
+                    </div>
+                    <div id='return_form_other'>
+                        <div id='return_small_text'>
+                        <small>* pour ajouter plusieurs documents d'un coup séparer les références par des , </small>
+                        </div>
+                        <input type='submit' value='Enregistrer' class='validate_btn' value = 'Enregistrer'/>
+                    </div>.$errorMessage
+                    </form>
+                </div>";
+    }
+
+    /*
+     * Method that return the recapitulatif view
+     */
+    private function renderRecap(){
+
+        /*Get the number of returned and unreturned documents*/
+        $nbReturnedDocs= count($this->data["returnedDocuments"]);
+        $nbUnReturnedDocs=count($this->data["unreturnedDocuments"]);
+
+        /*Put each returned document in li*/
+        $returnedDocs ='';
+        foreach ($this->data["returnedDocuments"] as $document){
+            $returnedDocs.="<li>$document->title</li>";
+        }
+
+        /*Put each unreturned document in li*/
+        $unReturnedDocs ='';
+        foreach ($this->data["unreturnedDocuments"] as $document){
+            $unReturnedDocs.="<li>$document->title</li>";
+        }
+
+        /*Build html for returned documents*/
+        $section = "<section id='sectionReturn'>
+                                <article id='articleReturn'>
+                                    <h1 class='nomPage'>Récapitulatif retour</h1>
+                                    <div id='lstReturn'>
+                                        <div class='list_documents'>
+                                            <div>
+                                                <p>Retournés : </p>
+                                                <ul>
+                                                    {$returnedDocs}
+                                                </ul>
+                                            </div>
+                                            
+                                            <div id='TTreturn'>
+                                             Total retournés : {$nbReturnedDocs}
+                                            </div>
+                                        </div>
+                                    
+                                        <div class='list_documents'>
+                                            <div>
+                                                <p>Reste à rendre : </p>
+                                                <ul>
+                                                    {$unReturnedDocs}
+                                                </ul>
+                                            </div>
+                                            <div id='TTreturn'>
+                                             Total à rendre : {$nbUnReturnedDocs}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>";
+
+        return $section;
     }
 }
