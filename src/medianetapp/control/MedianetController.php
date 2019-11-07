@@ -96,9 +96,8 @@ class MedianetController extends \mf\control\AbstractController
 
                                 $document->id_State=2;
                                 $document->update();
-
-                                Router::executeRoute("borrow_recap");
                             }
+                            Router::executeRoute("borrow_recap");
                         }else{
                             /* SI DOCUMENT INDISPONIBLE */
                             $message_erreur = $this->errorMessage("Ajout d'emprunt échoué, la ou les référence(s) :",$error_reference);
