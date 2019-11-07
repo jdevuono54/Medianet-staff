@@ -25,6 +25,21 @@ class MedianetController extends \mf\control\AbstractController
         $vue = new MedianetView(null);
         $vue->render("borrow");
     }
+
+    public function viewUser(){
+        if(isset($_GET["id"]) && filter_var($_GET["id"],FILTER_VALIDATE_INT)){
+            $user = User::where("id","=",$_GET["id"])->first();
+            if($user != null){
+                $vue = new MedianetView($user);
+                $vue->render("user");
+            }
+        }
+        else{
+            $vue = new MedianetView(null);
+            $vue->render("user");
+        }
+    }
+
     public function borrowRecap(){
         if(isset($_POST["user"])){
             $user = user::where("id","=",$_POST["user"])->first();
