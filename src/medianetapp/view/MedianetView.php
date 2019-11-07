@@ -188,15 +188,56 @@ EQT;
      * Method that return the recapitulatif view
      */
     private function renderRecap(){
-        $contents = "<h1>Documents rendus ".count($this->data["returnedDocuments"])." :<br>";
-        foreach ($this->data["returnedDocuments"] as $docRendu) {
-            $contents .= "$docRendu->title<br>";
-        }
-        $contents .= "<h1>Documents encore en possession ".count($this->data["unreturnedDocuments"])." :<br>";
-        foreach ($this->data["unreturnedDocuments"] as $docEncore) {
-            $contents .= "$docEncore->title<br>";
+
+        /*Get the number of returned and unreturned documents*/
+        $nbReturnedDocs= count($this->data["returnedDocuments"]);
+        $nbUnReturnedDocs=count($this->data["unreturnedDocuments"]);
+
+        /*Put each returned document in li*/
+        $returnedDocs ='';
+        foreach ($this->data["returnedDocuments"] as $document){
+            $returnedDocs.="<li>$document->title</li>";
         }
 
-        return $contents;
+        /*Put each unreturned document in li*/
+        $unReturnedDocs ='';
+        foreach ($this->data["unreturnedDocuments"] as $document){
+            $unReturnedDocs.="<li>$document->title</li>";
+        }
+
+        /*Build html for returned documents*/
+        $section = "<section id='sectionReturn'>
+                                <article id='articleReturn'>
+                                    <h1 class='nomPage'>Récapitulatif retour</h1>
+                                    <div id='lstReturn'>
+                                        <div class='list_documents'>
+                                            <div>
+                                                <p>Retournés : </p>
+                                                <ul>
+                                                    {$returnedDocs}
+                                                </ul>
+                                            </div>
+                                            
+                                            <div id='TTreturn'>
+                                             Total retournés : {$nbReturnedDocs}
+                                            </div>
+                                        </div>
+                                    
+                                        <div class='list_documents'>
+                                            <div>
+                                                <p>Reste à rendre : </p>
+                                                <ul>
+                                                    {$unReturnedDocs}
+                                                </ul>
+                                            </div>
+                                            <div id='TTreturn'>
+                                             Total à rendre : {$nbUnReturnedDocs}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>";
+
+        return $section;
     }
 }
