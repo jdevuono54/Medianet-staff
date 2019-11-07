@@ -17,23 +17,18 @@ class MedianetController extends \mf\control\AbstractController
 
 
     public function viewUser(){
-      $vue = new MedianetView(null);
-      $vue->render("user");
-    }
-
-    public function displayUser(){
-       echo $_GET['idUser'];
-      if(isset($_GET["idUser"]) && filter_var($_GET["idUser"],FILTER_VALIDATE_INT)){
-            $user = User::where("id","=",$_GET["idUser"])->first();
+      if(isset($_GET["id"]) && filter_var($_GET["id"],FILTER_VALIDATE_INT)){
+            $user = User::where("id","=",$_GET["id"])->first();
 
             if($user != null){
                 $vue = new MedianetView($user);
-                $vue->render("display_user");
+                $vue->render("user");
             }
-            else{
-                throw new \Exception("Le user n'existe pas");
-            }
+        }
 
+        else{
+          $vue = new MedianetView(null);
+          $vue->render("user");
         }
     }
 }
