@@ -173,7 +173,10 @@ class MedianetController extends \mf\control\AbstractController
             }
             else{
                 foreach ($documents as $document){
-                    $borrow = Borrow::where('id_User','=',$filtredTxtUser)->where('id_Document','=',$document)->first();
+                    //Get the document id to get the exact borrow and update the state of the document
+                    $doc = Document::where('reference','=',$document)->first();
+
+                    $borrow = Borrow::where('id_User','=',$filtredTxtUser)->where('id_Document','=',$doc->id)->first();
                     if(!$borrow){
 
                         //Redirect to return view because of the not valid document
@@ -188,7 +191,7 @@ class MedianetController extends \mf\control\AbstractController
                         $borrow->save();
 
                         //Update the document state
-                        $docToUpdate = Document::where('id','=',$document)->first();
+                        $docToUpdate = Document::where('id','=',$doc->id)->first();
                         $docToUpdate->id_State=1;
                         $docToUpdate->save();
 
