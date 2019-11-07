@@ -132,6 +132,12 @@ EQT;
             case "home":
                 $content = $this->renderHome();
                 break;
+            case "return":
+                $content = $this->renderFormReturn();
+                break;
+            case "return_recap":
+                $content=$this->renderRecap();
+                break;
         }
 
 
@@ -155,19 +161,42 @@ EQT;
     private function renderFormReturn(){
         $errorMessage="";
         if(isset($this->data["error_message"])){
-            $errorMessage="<p>{$this->data["error_message"]}</p>";
+            $errorMessage="<p class='error_message'>{$this->data["error_message"]}</p>";
         }
-        return "<form method='post' action ='add_return'>
+        return "<h1 class='nomPage'>Ajouter des retours</h1>
+                 <div id='return_form'>
+                    <form method='post' action ='add_return'>
+                    <div id='return_form_user'>
+                        <label for='txtUser'>Usager :</label>
                         <input type = 'text' name = 'txtUser' required/>
+                    </div>
+                    <div id='return_form_reference'>
+                        <label for='txtDoc' class='doc'>Documents *:</label>
                         <input type = 'text' name = 'txtDoc' required/>
-                        <input type = 'submit'/>
-                     </form>".$errorMessage;
+                    </div>
+                    <div id='return_form_other'>
+                        <div id='return_small_text'>
+                        <small>* pour ajouter plusieurs documents d'un coup séparer les références par des , </small>
+                        </div>
+                        <input type='submit' value='Enregistrer' class='validate_btn' value = 'Enregistrer'/>
+                    </div>.$errorMessage
+                    </form>
+                </div>";
     }
 
     /*
      * Method that return the recapitulatif view
      */
     private function renderRecap(){
-        return "<h1>Yes</h1>";
+        $contents = "<h1>Documents rendus ".count($this->data["returnedDocuments"])." :<br>";
+        foreach ($this->data["returnedDocuments"] as $docRendu) {
+            $contents .= "$docRendu->title<br>";
+        }
+        $contents .= "<h1>Documents encore en possession ".count($this->data["unreturnedDocuments"])." :<br>";
+        foreach ($this->data["unreturnedDocuments"] as $docEncore) {
+            $contents .= "$docEncore->title<br>";
+        }
+
+        return $contents;
     }
 }

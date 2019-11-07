@@ -9,12 +9,6 @@ use medianetapp\model\Document;
 use medianetapp\view\MedianetView;
 use mf\router\Router;
 
-use medianetapp\model\Borrow;
-use medianetapp\model\Document;
-use medianetapp\model\User;
-use medianetapp\view\MedianetView;
-use mf\router\Router;
-use mysql_xdevapi\Exception;
 
 class MedianetController extends \mf\control\AbstractController
 {
