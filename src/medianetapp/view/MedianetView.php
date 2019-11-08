@@ -18,10 +18,10 @@ class MedianetView extends \mf\view\AbstractView
         $router = new Router();
         $homeRoute = $router->urlFor("home");
 
-        return" <header class='head' id='headerapp' > <a href='".$homeRoute."' id='a1'><img src='".$src."/html/books.png' alt=''/></a><a href='".$homeRoute."' id='a2'> <b>M</b>EDIA.NET</a> </header>";
+        return" <div class='head' id='headerapp' > <a href='".$homeRoute."' id='a1'><img src='".$src."/html/books.png' alt=''/></a><a href='".$homeRoute."' id='a2'> <b>M</b>EDIA.NET</a> </div>";
     }
     private function renderFooter(){
-        return"<footer class='foot' id='footerapp'> Copyright@2019</footer>";
+        return"<div class='foot' id='footerapp'> Copyright@2019</div>";
     }
     private function renderHome(){
 
