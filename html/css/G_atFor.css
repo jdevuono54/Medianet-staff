@@ -50,7 +50,7 @@ img {
 
 tr, th, td {
   border: 1px solid black;
-  background-color: #007bff; }
+  background-color: grey; }
 
 header, footer {
   text-align: center;

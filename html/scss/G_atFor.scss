@@ -92,7 +92,8 @@ img{
 tr,th,td
 {
   border:1px solid black;
-  background-color:$tablecolor;
+  background-color:grey;
+  
 }
 header,footer{
   text-align: center;
@@ -109,7 +110,7 @@ header,footer{
 
 }
 
-#footerapp {  
+#footerapp {
   background-color: $formcolor;
   @include cellule(12, 0, 12, 0);
   height: 40px;
