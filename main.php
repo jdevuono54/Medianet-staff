@@ -52,6 +52,26 @@ $router->addRoute('return_recap',
     'viewReturnRecap',
     null
 );
+$router->addRoute('check_signup_request',
+    '/check_signup_request',
+    'medianetapp\control\MedianetController',
+    'viewCheckSignupRequest',
+    null
+);
+$router->addRoute('validate_signup_request',
+    '/validate_signup_request',
+    'medianetapp\control\MedianetController',
+    'validateSignupRequest',
+    null
+);
+$router->addRoute('add_user',
+    '/add_user',
+    'medianetapp\control\MedianetController',
+    'addUser',
+    null
+);
 $router->setDefaultRoute('/home/');
 $router->run();
+
+
 
