@@ -53,9 +53,6 @@ class MedianetView extends \mf\view\AbstractView
 EQT;
         return $html;
     }
-    private function renderHome(){
-        return "home";
-    }
 
     private function renderBorrow(){
         $message = $this->data["error_message"];
@@ -220,7 +217,7 @@ EQT;
                 $content = $this->renderUser();
                 break;
             case "check_signup_request":
-                $body=$this->renderCheckSignupRequest();
+                $content = $this->renderCheckSignupRequest();
                 break;
         }
 
@@ -267,17 +264,6 @@ EQT;
                     </form>
                 </div>";
     }
-     private function renderFormReturn(){
-         $errorMessage="";
-         if(isset($this->data["error_message"])){
-             $errorMessage="<p>{$this->data["error_message"]}</p>";
-         }
-         return "<form method='post' action ='add_return'>
-                         <input type = 'text' name = 'txtUser' required/>
-                         <input type = 'text' name = 'txtDoc' required/>
-                         <input type = 'submit'/>
-                      </form>".$errorMessage;
-     }
 
 
     /*
