@@ -33,6 +33,10 @@ class MedianetController extends \mf\control\AbstractController
                 $vue = new MedianetView($user);
                 $vue->render("user");
             }
+            else{
+                $vue = new MedianetView(null);
+                $vue->render("user");
+            }
         }
         else{
             $vue = new MedianetView(null);
