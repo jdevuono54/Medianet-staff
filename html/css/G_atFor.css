@@ -1,18 +1,349 @@
-.error_message {
+#borrow_form .error_message, #return_form .error_message {
   color: red;
   width: 100%;
   text-align: center;
 }
-
-.validate_btn {
+#borrow_form .validate_btn, #return_form .validate_btn {
   background-color: #007bff;
   height: 3em;
   border-radius: 6px;
 }
-.validate_btn:hover {
+#borrow_form .validate_btn:hover, #return_form .validate_btn:hover {
   background-color: #3395ff;
 }
 
+.nomPage {
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 2px solid black;
+  background-color: grey;
+  font-size: 2em;
+}
+
+/*KELMOUA SCSS*/
+img {
+  width: 40px;
+  height: 40px;
+}
+
+#a1 {
+  display: block;
+  padding-top: 3px;
+  padding-left: 5px;
+  width: 100px;
+  height: 60px;
+  float: left;
+  clear: left;
+}
+
+#a2 {
+  text-decoration: none;
+  font-size: 40px;
+  color: white;
+  font-family: verdana;
+  height: 60px;
+}
+
+#a3, #a4 {
+  background-color: gray;
+  border-radius: 70%;
+  text-decoration: none;
+  width: 100px;
+  height: 100px;
+  color: white;
+  font-size: 16px;
+}
+
+tr, th, td {
+  border: 1px solid black;
+  background-color: grey;
+}
+
+header, footer {
+  text-align: center;
+  color: white;
+  background-color: #2F3336;
+}
+
+.tableprofil {
+  margin: auto;
+}
+
+.ar1 {
+  text-align: center;
+}
+
+#footerapp {
+  background-color: #2F3336;
+  width: 100%;
+  margin-left: 0%;
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: 40px;
+  bottom: 0;
+  position: fixed;
+}
+
+#headerapp {
+  width: 100%;
+  margin-left: 0%;
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: 5%;
+  margin-right: 10px;
+  margin-top: -8px;
+  margin: auto;
+}
+
+@media (min-width: 0px) {
+  #sectionEmprunt, #sectionReturn {
+    width: 96.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #sectionEmprunt #lstEmprunt, #sectionEmprunt #lstReturn, #sectionReturn #lstEmprunt, #sectionReturn #lstReturn {
+    width: 31.2%;
+    margin-left: 34.4%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 2em;
+  }
+  #sectionEmprunt #TTemprunt, #sectionEmprunt #TTreturn, #sectionReturn #TTemprunt, #sectionReturn #TTreturn {
+    width: 31.2%;
+    margin-left: 50.8%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #sectionEmprunt #lstReturn, #sectionReturn #lstReturn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #sectionEmprunt #lstReturn .list_documents, #sectionReturn #lstReturn .list_documents {
+    width: 47.6%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #sectionEmprunt p, #sectionReturn p {
+    color: #9c9c9c;
+    text-decoration-line: underline;
+    text-decoration-color: #007bff;
+  }
+}
+/* TOUT ECRANS PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait) {
+  #sectionMenu {
+    width: 96.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 20%;
+  }
+  #sectionMenu #divMenu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #sectionMenu #divMenu #MenuGestionEmprunt, #sectionMenu #divMenu #MenuGestionRetour, #sectionMenu #divMenu #MenuGestionUsager {
+    width: 64%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background-color: grey;
+    border: 2px solid black;
+    height: 3em;
+    font-size: larger;
+    text-align: center;
+  }
+  #sectionMenu #divMenu #MenuGestionRetour {
+    margin-top: 2em;
+  }
+  #sectionMenu #divMenu #MenuGestionUsager {
+    margin-top: 2em;
+  }
+}
+/* TABLETTES PORTRAIT */
+@media (min-width: 0px) and (orientation: portrait) and (max-width: 992px) {
+  #borrow_form, .nomPage, #return_form {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  #borrow_form label, #borrow_form input, #return_form label, #return_form input {
+    width: 100%;
+    height: 3em;
+  }
+  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other, #borrow_form #return_form_reference, #borrow_form #return_form_other, #return_form #borrow_form_reference, #return_form #borrow_form_other, #return_form #return_form_reference, #return_form #return_form_other {
+    margin-top: 1em;
+  }
+  #borrow_form #borrow_small_text, #borrow_form #return_small_text, #return_form #borrow_small_text, #return_form #return_small_text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form #borrow_small_text small, #borrow_form #return_small_text small, #return_form #borrow_small_text small, #return_form #return_small_text small {
+    margin-bottom: 1em;
+  }
+}
+/* TABLETTES PAYSAGE */
+@media (min-width: 0px) and (orientation: landscape) and (max-width: 992px) {
+  #borrow_form, #return_form {
+    width: 80%;
+    margin-left: 10%;
+  }
+  #borrow_form #borrow_form_user, #borrow_form #borrow_form_reference, #borrow_form #return_form_user, #borrow_form #return_form_reference, #return_form #borrow_form_user, #return_form #borrow_form_reference, #return_form #return_form_user, #return_form #return_form_reference {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form #borrow_form_user label, #borrow_form #borrow_form_reference label, #borrow_form #return_form_user label, #borrow_form #return_form_reference label, #return_form #borrow_form_user label, #return_form #borrow_form_reference label, #return_form #return_form_user label, #return_form #return_form_reference label {
+    width: 31.2%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form #borrow_form_user input, #borrow_form #borrow_form_reference input, #borrow_form #return_form_user input, #borrow_form #return_form_reference input, #return_form #borrow_form_user input, #return_form #borrow_form_reference input, #return_form #return_form_user input, #return_form #return_form_reference input {
+    height: 3em;
+    width: 64%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form #borrow_form_reference, #borrow_form #borrow_form_other, #borrow_form #return_form_reference, #borrow_form #return_form_other, #return_form #borrow_form_reference, #return_form #borrow_form_other, #return_form #return_form_reference, #return_form #return_form_other {
+    margin-top: 1em;
+  }
+  #borrow_form #borrow_form_other #borrow_small_text, #borrow_form #borrow_form_other #return_small_text, #borrow_form #return_form_other #borrow_small_text, #borrow_form #return_form_other #return_small_text, #return_form #borrow_form_other #borrow_small_text, #return_form #borrow_form_other #return_small_text, #return_form #return_form_other #borrow_small_text, #return_form #return_form_other #return_small_text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form #borrow_form_other #borrow_small_text small, #borrow_form #borrow_form_other #return_small_text small, #borrow_form #return_form_other #borrow_small_text small, #borrow_form #return_form_other #return_small_text small, #return_form #borrow_form_other #borrow_small_text small, #return_form #borrow_form_other #return_small_text small, #return_form #return_form_other #borrow_small_text small, #return_form #return_form_other #return_small_text small {
+    margin-bottom: 1em;
+  }
+  #borrow_form #borrow_form_other .validate_btn, #borrow_form #return_form_other .validate_btn, #return_form #borrow_form_other .validate_btn, #return_form #return_form_other .validate_btn {
+    width: 96.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  #sectionMenu {
+    width: 96.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 20%;
+  }
+  #sectionMenu #divMenu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #sectionMenu #divMenu #MenuGestionEmprunt, #sectionMenu #divMenu #MenuGestionRetour, #sectionMenu #divMenu #MenuGestionUsager {
+    width: 10.7%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background-color: grey;
+    border: 2px solid black;
+    font-size: larger;
+    text-align: center;
+    height: 5em;
+    width: 5em;
+  }
+}
+/*LAPTOP*/
+@media (min-width: 992px) {
+  #borrow_form, #return_form {
+    width: 50%;
+    margin: auto;
+  }
+  #borrow_form form, #return_form form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #borrow_form form #borrow_form_user, #borrow_form form #borrow_form_reference, #borrow_form form #return_form_user, #borrow_form form #return_form_reference, #return_form form #borrow_form_user, #return_form form #borrow_form_reference, #return_form form #return_form_user, #return_form form #return_form_reference {
+    width: 50%;
+    margin-left: 0%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form form #borrow_form_user .borrow_label, #borrow_form form #borrow_form_reference .borrow_label, #borrow_form form #return_form_user .borrow_label, #borrow_form form #return_form_reference .borrow_label, #return_form form #borrow_form_user .borrow_label, #return_form form #borrow_form_reference .borrow_label, #return_form form #return_form_user .borrow_label, #return_form form #return_form_reference .borrow_label {
+    width: 31.2%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form form #borrow_form_user input, #borrow_form form #borrow_form_reference input, #borrow_form form #return_form_user input, #borrow_form form #return_form_reference input, #return_form form #borrow_form_user input, #return_form form #borrow_form_reference input, #return_form form #return_form_user input, #return_form form #return_form_reference input {
+    width: 64%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  #borrow_form form #borrow_form_other, #borrow_form form #return_form_other, #return_form form #borrow_form_other, #return_form form #return_form_other {
+    width: 100%;
+  }
+  #borrow_form form #borrow_form_other #borrow_small_text, #borrow_form form #borrow_form_other #return_small_text, #borrow_form form #return_form_other #borrow_small_text, #borrow_form form #return_form_other #return_small_text, #return_form form #borrow_form_other #borrow_small_text, #return_form form #borrow_form_other #return_small_text, #return_form form #return_form_other #borrow_small_text, #return_form form #return_form_other #return_small_text {
+    width: 50%;
+    margin-left: 50%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 1em;
+  }
+  #borrow_form form #borrow_form_other .validate_btn, #borrow_form form #return_form_other .validate_btn, #return_form form #borrow_form_other .validate_btn, #return_form form #return_form_other .validate_btn {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1em;
+  }
+
+  #sectionMenu {
+    width: 96.8%;
+    margin-left: 1.6%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: 20%;
+  }
+  #sectionMenu #divMenu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  #sectionMenu #divMenu #MenuGestionEmprunt, #sectionMenu #divMenu #MenuGestionRetour, #sectionMenu #divMenu #MenuGestionUsager {
+    width: 10.7%;
+    margin-left: 18%;
+    overflow-wrap: break-word;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background-color: grey;
+    border: 2px solid black;
+    font-size: larger;
+    text-align: center;
+    height: 5em;
+  }
+}
 .nomPage {
   width: 50%;
   margin-left: 25%;

@@ -1,6 +1,9 @@
 <?php
 
-
+use medianetapp\model\User as User;
+use medianetapp\model\Document as Document;
+use medianetapp\model\Borrow as Borrow;
+use mf\router\Router as router;
 
 require_once 'src/mf/utils/ClassLoader.php';
 /* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
@@ -23,16 +26,14 @@ $db->addConnection( $config ); /* configuration avec nos paramètres */
 $db->setAsGlobal();            /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent();           /* établir la connexion */
 
-/*Add routes*/
+$router = new router();
 
-$router = new mf\router\Router();
+$router->addRoute('borrow_recap', '/borrow_recap', '\medianetapp\control\MedianetController', 'borrowRecap',null);
+$router->addRoute("borrow","/borrow","medianetapp\control\MedianetController","viewBorrow",null);
+$router->addRoute("add_borrow", "/add_borrow","medianetapp\control\MedianetController","add_borrow",null);
+$router->addRoute("user","/user","medianetapp\control\MedianetController","viewUser",null);
+$router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
 
-$router->addRoute('home',
-    '/home/',
-    'medianetapp\control\MedianetController',
-    'viewHome',
-    null
-);
 $router->addRoute('return',
     '/return',
     'medianetapp\control\MedianetController',
@@ -70,5 +71,7 @@ $router->addRoute('add_user',
     null
 );
 $router->setDefaultRoute('/home/');
-
 $router->run();
+
+
+
