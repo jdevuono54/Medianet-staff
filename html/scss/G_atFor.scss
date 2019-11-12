@@ -50,6 +50,84 @@ $errorColor: red;
   font-size: 2em;
 }
 
+/*KELMOUA SCSS*/
+$formcolor:#2F3336;
+$tablecolor: #007bff;
+$profilColor: red;
+
+img{
+  width: 40px;
+  height: 40px;
+}
+
+#a1{
+  display: block;
+  padding-top: 3px;
+  padding-left: 5px;
+  width: 100px;
+  height: 60px;
+  float: left;
+  clear: left;
+}
+#a2
+{
+  text-decoration:none;
+  font-size: 40px;
+  color: white;
+  font-family: verdana;
+  height: 60px;
+
+
+}
+#a3,#a4{
+  background-color:gray;
+  border-radius:70%;
+  text-decoration : none;
+  width:100px;
+  height:100px;
+  color: white;
+  font-size: 16px;
+
+}
+tr,th,td
+{
+  border:1px solid black;
+  background-color:grey;
+  
+}
+header,footer{
+  text-align: center;
+  color: white;
+  background-color: $formcolor;
+}
+
+.tableprofil{
+  margin: auto;
+}
+
+.ar1{
+  text-align: center;
+
+}
+
+#footerapp {
+  background-color: $formcolor;
+  @include cellule(12, 0, 12, 0);
+  height: 40px;
+  bottom: 0;
+  position: fixed;
+}
+
+  #headerapp{
+
+    @include cellule(12,0,12,0);
+    height: 5%;
+    margin-right: 10px;
+    margin-top: -8px;
+    margin : auto;
+  }
+// FIN KELMOUA SCSS
+
 // POUR TOUT ECRANS
 @media(min-width: 0px){
   // HABIB RECAP EMPRUNTS also RETURN_RECAP (Younes)
@@ -263,5 +341,213 @@ $errorColor: red;
     }
 
     //FIN MENU HABIB
+  }
+}
+
+.nomPage{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 2px solid black;
+  background-color: grey;
+  font-size: 2em;
+}
+
+.numDemande{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 1px solid #c1c1c1;
+  background-color: #66ccff;
+  font-size: 1em;
+}
+
+// POUR TOUT ECRANS
+
+#demande_form{
+  @include cellule(4,4,12,1.6%);
+}
+//////////////
+//////////////
+#signup_form, #demande_form {
+  display: grid;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 2rem auto 0 auto;
+  max-width: 600px;
+  padding: 1em;
+}
+#signup_form input{
+  background: #fff;
+  border: 1px solid #9c9c9c;
+  @include cellule(4,2,6,0%);
+}
+#demande_form input {
+  background: #ebebe0;
+  border: 1px solid #9c9c9c;
+  @include cellule(4,2,6,0%);
+}
+#signup_form input[type="submit"] {
+  background: lightgrey;
+  padding: 0.7em;
+  @include cellule(2,3,6,0%);
+  border: 0;
+}
+#demande_form input[type="submit"] {
+  background: #8cff1a;
+  padding: 0.7em;
+  @include cellule(2,3,6,0%);
+  border: 0;
+}
+#signup_form input[type="submit"]:hover, #demande_form input[type="submit"]:hover {
+  background: #3399ff;
+}
+
+#signup_form label, #demande_form label {
+  font-family: verdana;
+  font-size: 12px;
+  margin-top: 10em;
+  //padding: 0.5em 0.5em 0.5em 0;
+  //@include cellule(2,1,6,0%);
+}
+
+#signup_form input, #demande_form input {
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+#signup_form input:focus, #demande_form input:focus {
+  outline: 3px solid #3399ff;
+}
+
+
+.nomPage{
+  @include cellule(6,3,12,0%);
+  margin-left: 25%;
+  text-align: center;
+  height: auto;
+  border: 2px solid black;
+  background-color: grey;
+  font-size: 2em;
+}
+
+// POUR TOUT ECRANS
+/*@media(min-width: 0px){
+  #signup_form{
+  @include cellule(6,3,12,1.6%);
+}
+//////////////
+//////////////
+#signup_form {
+display: grid;
+padding: 1em;
+background: #f9f9f9;
+border: 1px solid #c1c1c1;
+margin: 2rem auto 0 auto;
+//max-width: 600px;
+padding: 1em;
+}*/
+#signup_form input {
+  background: #fff;
+  border: 1px solid #9c9c9c;
+  @include cellule(4,2,6,0%);
+}
+#signup_form input[type="submit"] {
+  background: lightgrey;
+  padding: 0.7em;
+  @include cellule(2,3,6,0%);
+  border: 0;
+}
+#signup_form input[type="submit"]:hover {
+  background: #3399ff;
+}
+
+#signup_form label {
+  font-family: verdana;
+  font-size: 12px;
+  margin-top: 10em;
+  //padding: 0.5em 0.5em 0.5em 0;
+  //@include cellule(2,1,6,0%);
+}
+
+#signup_form input {
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+#signup_form input:focus {
+  outline: 3px solid #3399ff;
+}
+
+
+
+
+
+/* TOUT ECRANS PORTRAIT */
+
+/* TABLETTES PORTRAIT */
+@media (min-width: 991px) {
+  #signup_form{
+    @include cellule(6,3,12,1.6%);
+  }
+
+}
+/* SmartPhone */
+@media (max-width: 990px) {
+  #signup_form {
+    @include cellule(6, 3, 12, 0);
+  }
+  #demande_form {
+    @include cellule(6, 3, 12, 0);
+  }
+  #signup_form input, #demande_form input {
+    background: #fff;
+    border: 1px solid #9c9c9c;
+    @include cellule(12, 0, 12, 0%);
+    height: 80px;
+    font-size: 30px;
+  }
+  #demande_form input {
+    background: #ebebe0;
+    border: 1px solid #9c9c9c;
+    @include cellule(12, 0, 12, 0%);
+    height: 80px;
+    font-size: 30px;
+  }
+  #signup_form label, #demande_form label {
+    font-family: verdana;
+    font-size: 30px;
+    margin-top: 10em;
+  }
+  #signup_form input[type="submit"] {
+    background: lightgrey;
+    padding: 0.7em;
+    @include cellule(4, 1, 6, 0%);
+    height: 80px;
+    font-size: 30px;
+  }
+  #demande_form input[type="submit"] {
+    background: #8cff1a;
+    padding: 0.7em;
+    @include cellule(4, 1, 6, 0%);
+    height: 80px;
+    font-size: 30px;
+  }
+  .nomPage {
+    @include cellule(4, 1, 6, 0%);
+    font-size: 36px;
+    height: 70px;
+    text-align: center;
+    padding-top: .5em;
+  }
+  .numDemande {
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    height: 70px;
+    border: 1px solid #c1c1c1;
+    background-color: #66ccff;
+    font-size: 36px;
   }
 }

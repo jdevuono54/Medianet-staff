@@ -31,6 +31,7 @@ $router = new router();
 $router->addRoute('borrow_recap', '/borrow_recap', '\medianetapp\control\MedianetController', 'borrowRecap',null);
 $router->addRoute("borrow","/borrow","medianetapp\control\MedianetController","viewBorrow",null);
 $router->addRoute("add_borrow", "/add_borrow","medianetapp\control\MedianetController","add_borrow",null);
+$router->addRoute("user","/user","medianetapp\control\MedianetController","viewUser",null);
 $router->addRoute("home","/home/","medianetapp\control\MedianetController","viewHome",null);
 
 $router->addRoute('return',
@@ -51,6 +52,26 @@ $router->addRoute('return_recap',
     'viewReturnRecap',
     null
 );
+$router->addRoute('check_signup_request',
+    '/check_signup_request',
+    'medianetapp\control\MedianetController',
+    'viewCheckSignupRequest',
+    null
+);
+$router->addRoute('validate_signup_request',
+    '/validate_signup_request',
+    'medianetapp\control\MedianetController',
+    'validateSignupRequest',
+    null
+);
+$router->addRoute('add_user',
+    '/add_user',
+    'medianetapp\control\MedianetController',
+    'addUser',
+    null
+);
 $router->setDefaultRoute('/home/');
 $router->run();
+
+
 

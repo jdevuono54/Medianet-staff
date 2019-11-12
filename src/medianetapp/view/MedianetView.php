@@ -1,8 +1,10 @@
 <?php
 
 namespace medianetapp\view;
+use medianetapp\model\SignUpRequest;
 
 use mf\router\Router;
+use mf\utils\HttpRequest;
 
 class MedianetView extends \mf\view\AbstractView
 {
@@ -11,10 +13,16 @@ class MedianetView extends \mf\view\AbstractView
     }
 
     private function renderHeader(){
-        return "";
+        $httpRequet = new HttpRequest();
+        $src = $httpRequet->root;
+
+        $router = new Router();
+        $homeRoute = $router->urlFor("home");
+
+        return" <div class='head' id='headerapp' > <a href='".$homeRoute."' id='a1'><img src='".$src."/html/books.png' alt=''/></a><a href='".$homeRoute."' id='a2'> <b>M</b>EDIA.NET</a> </div>";
     }
     private function renderFooter(){
-        return "";
+        return"<div class='foot' id='footerapp'> Copyright@2019</div>";
     }
     private function renderHome(){
 
@@ -118,6 +126,73 @@ EQT;
         return $html;
     }
 
+    private function renderUser(){
+        $user = $this->data;
+        if($user == null){
+            $html = "<h1 class=\"nomPage\">Voir un utilisateur</h1>
+            <article class='ar1'>
+            <form class='forms' action='user' method='get'>
+              <input type='text' class='in1' name='id' id='idUser' placeholder='Id usager ..'>
+              <button class='bt1' type='submit'>Rechercher</button>
+            </form>
+          </article>";
+        }
+        else{
+            $html = "<h1 class=\"nomPage\">Voir un utilisateur</h1>
+            <article class='ar1'>
+            <form class='forms' action='user' method='get'>
+              <input type='text' class='in1' name='id' id='idUser' placeholder='Id usager ..'>
+              <button class='bt1' type='submit'>Rechercher</button>
+            </form>
+          </article> <br><br>
+          <div class='profil' ><h1 class='h1'>Profil :</h1>
+                 <table class='tableprofil'>
+                    <tr>
+                   <th id='thName'>Nom :</th>
+                   <th id='thMail'>Mail :</th>
+                   <th id='thPhone'>Phone : </th>
+                   <th id='thDate'>Date d'adhésion:</th>
+                   </tr>
+                  <tr>
+                  <td> ".$user->name."</td>
+                  <td>".$user->mail."</td>
+                  <td>".$user->phone."</td>
+                  <td> ".$user->membership_date."</td></tr></table></div>
+                  <h1 class='h2'>Les documents empruntés :</h1>
+                  <div class='divProfil' id='divProfil'>
+                  <table class='tableprofil' id='tableProfil'>
+                  <tr>
+                  <th>Document :</th>
+                  <th>Titre :</th>
+                  <th>Description : </th>
+                  <th>Réference :</th>
+                  <th>Date d'emprunt  :</th>
+                  <th>Date prévu du retour :</th>
+                  </tr>
+          ";
+            $borrows = $user->Emprunts()->where("real_return_date","=",null)->get();
+            foreach ($borrows as $borrow){
+                $html .= $this->constructBlocBorrow($borrow);
+            }
+            $html .= "</table></div>";
+        }
+        return $html;
+    }
+    private function constructBlocBorrow($borrow){
+        $html ="
+                       <tr>
+                        <td> ".$borrow->id_Document."</td>
+                        <td> ".$borrow->document()->first()->title."</td>
+                        <td>".$borrow->document()->first()->description."</td>
+                        <td> ".$borrow->document()->first()->reference."</td>
+                        <td> ".$borrow->borrow_date."</td>
+                        <td> ".$borrow->return_date."</td>
+                      </tr>
+";
+        return $html;
+    }
+
+
     protected function renderBody($selector=null){
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
@@ -137,6 +212,12 @@ EQT;
                 break;
             case "return_recap":
                 $content=$this->renderRecap();
+                break;
+            case "user":
+                $content = $this->renderUser();
+                break;
+            case "check_signup_request":
+                $content = $this->renderCheckSignupRequest();
                 break;
         }
 
@@ -183,6 +264,7 @@ EQT;
                     </form>
                 </div>";
     }
+
 
     /*
      * Method that return the recapitulatif view
@@ -239,5 +321,82 @@ EQT;
                             </section>";
 
         return $section;
+        $contents = "<h1>Documents rendus ".count($this->data["returnedDocuments"])." :<br>";
+        foreach ($this->data["returnedDocuments"] as $docRendu) {
+          $contents .= "$docRendu->title<br>";
+        }
+        $contents .= "<h1>Documents encore en possession ".count($this->data["unreturnedDocuments"])." :<br>";
+        foreach ($this->data["unreturnedDocuments"] as $docEncore) {
+          $contents .= "$docEncore->title<br>";
+        }
+
+        return $contents;
     }
+
+    /////
+    private function renderCheckSignupRequest(){
+        $demandes = SignUpRequest::all();
+        $errorMessage="";
+        $message="";
+        if(isset($this->data["error_message"])){
+            $errorMessage="<p class='error_message'>{$this->data["error_message"]}</p>";
+        }
+        $content="<h1 class='nomPage'>Ajouter un usager</h1>
+                  <div id='signup_form'>
+                    <form method='post' action ='add_user'>
+                    <div>
+                        <label for='txtName'>Nom :</label>
+                        <input type = 'text' name = 'txtName' required/>
+                    </div>
+                    <div>
+                        <label for='txtMail'>Mail :</label>
+                        <input type = 'email' name = 'txtMail' required/>
+                    </div>
+                    <div>
+                        <label for='txtPassword1'>Mot de passe :</label>
+                        <input type = 'password' name = 'txtPassword1' required/>
+                    </div>
+                    <div>
+                        <label for='txtPassword2'>Répeter le mot de passe :</label>
+                        <input type = 'password' name = 'txtPassword2' required/>
+                    </div>
+                    <div>
+                        <label for='txtPhone'>Tel (Format: 0123456789) :</label>
+                        <input type = 'tel' name = 'txtPhone' pattern='[0-9]{10}' required/>
+                    </div>
+                    <input type='submit' value='Enregistrer' value = 'Enregistrer'/>$errorMessage
+                    </form>
+                  </div>
+                  <h1 class='nomPage'>Les demandes d'inscription</h1>";
+
+        if(!$demandes){
+            $message="<p class='error_message'>Pas de demandes d'inscriptions</p>";
+        }
+        else {
+            foreach ($demandes as $demande) {
+                $content.="<h2 class='numDemande'>Demande $demande->id</h2>
+                         <div id='demande_form'>
+                            <form method='post' action ='validate_signup_request'>
+                            <div>
+                                <label for='txtName'>Nom :</label>
+                                <input type = 'text' value='$demande->name' name = 'txtName' disabled/>
+                            </div>
+                            <div>
+                                <label for='txtMail'>Mail :</label>
+                                <input type = 'email' value='$demande->mail'  name = 'txtMail' readonly/>
+                            </div>
+                            <div>
+                                <label for='txtPhone'>Tel :</label>
+                                <input type = 'tel' value='$demande->phone'  name = 'txtPhone' disabled/>
+                            </div>
+                            <input type='submit' value='Valider' value = 'Valider'/>
+                            </form>
+                        </div>";
+            }
+        }
+
+        return $content . $message;
+    }
+
+
 }
